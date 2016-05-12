@@ -1,0 +1,25 @@
+{% extends "base/indexBase.html" %}
+{% block content %}
+<style type="text/css">
+	.container{
+		margin-top: 10px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+		<div class="panel">
+			<ul class="nav nav-pills nav-stacked">
+				 <li class="active"><a href="#">个人资料</a></li>
+				 <li><a href="#">在学课程</a></li>
+			</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="panel">
+				{% block rightpanel %}{% endblock%}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

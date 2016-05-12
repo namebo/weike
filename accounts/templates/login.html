@@ -1,0 +1,50 @@
+{% extends "base/indexBase.html" %}
+{% block content %}
+<style type="text/css">
+	#panel-login{
+		max-width: 350px;
+		margin: 50px auto 20px;
+	}
+	#head-login{
+		text-align: center;
+	}
+	img{
+		width: 21px;
+		height: 21px;
+	}
+	#error{
+		color: red;
+	}
+</style>
+<div class="container">
+	<form action="" method="post" >
+	{% csrf_token %}
+		<div class="panel panel-default panel-single" id="panel-login">
+			<div class="panel-heading" id="head-login">
+				<h2>
+					微课登陆
+				</h2>
+			</div>
+			<div class="panel-body">
+				<div id="error">
+				{% if errors%}
+				{{errors}}
+				{% endif %}
+				</div>
+   				 <div class="input-group input-group-lg">
+				 	<span class="input-group-addon"><img src="/static/images/username.png"></span>
+				                <input type="text" class="form-control" name="username" placeholder="username" value="{{username}}">
+				 </div><br>
+   				 <div class="input-group input-group-lg">
+				 	<span class="input-group-addon"><img src="/static/images/password.png"></span>
+				                <input type="password" class="form-control"  name="password" placeholder="password">
+				 </div><br>
+				 <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+				 <div>
+				 	<a href="/accounts/register/">注册</a></br>
+				 </div>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base/indexBase.html" %}
+{% block content %}
+<style type="text/css">
+	.divider{
+		background: #e3e3e3;
+		height: 1px;
+		overflow: hidden;
+		margin: 15px 0;
+	}
+	.container{
+		margin-top: 15px;
+	}
+	.panel{
+		padding: 15px;
+	}
+	img{
+		width: 120px;
+		height: 120px;
+	}
+	#content{
+		float: left;
+	}
+	#img{
+		float: left;
+		margin-right: 40px;
+	}
+</style>
+<div class="container">
+	<div class="panel panel-default row">
+		<h2>师资介绍</h2>	
+		{% for t in teacher %}
+		<div class="divider col-md-12"></div>
+		<div class="col-md-12">
+			<div id="img">
+				<img src="/{{t.headAddr}}">
+			</div>
+			<div id="content">
+			<h3>{{t.name}}	</h3>
+			<h4>{{t.title}}</h4>
+			<h5>{{t.introduce}}</h5>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

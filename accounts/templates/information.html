@@ -1,0 +1,135 @@
+{% extends "base/indexBase.html" %}
+{% block content %}
+<style type="text/css">
+	.container{
+		margin-top: 10px;
+	}
+	img{
+		width: 21px;
+		height: 21px;
+	}
+	#head{
+		text-align: center;
+	}
+	.title-name{
+		margin-left: 15px;
+	}
+	#button{
+		text-align:right;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="panel" >
+				<ul class="nav nav-pills nav-stacked"   >
+					<li class="active"><a href="/accounts/information/">个人资料</a></li>
+					<li><a href="/accounts/learn/">在学课程</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="panel">
+
+				<form action="" method="post" >
+					{% csrf_token %}
+					<div class="panel panel-default panel-single" id="panel">
+						<div class="panel-body">
+							<h4>
+								个人信息
+							</h4>
+							{% if success1%}
+							<div class="alert alert-success">
+								<a href="#" class="close" data-dismiss="alert">
+									&times;
+								</a>
+								<strong>{{success1}}</strong>
+							</div>			
+							{% endif %}	
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">姓    名</span></span>
+								<input type="text" class="form-control" name="name" placeholder="姓名" value="{{user.name}}">
+							</div><br>	
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">邮    箱</span></span>
+								<input type="text" class="form-control" name="mail" placeholder="邮箱" value="{{user.mail}}">
+							</div><br>								
+							 <div class="form-group input-group-lg">
+								 <select  class="form-control" name="classname" id="class">
+								 <option>{{user.classname}}</option>	
+								 {% for class in classes%}
+								 <option>{{class.className}}</option>	
+								 {% endfor %}				
+								 </select>
+							</div>									
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">性    别</span></span>
+								<input type="text" class="form-control" name="sex" placeholder="性别" value="{{user.sex}}">
+							</div><br>			 
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">手机号</span></span>
+								<input type="text" class="form-control" name="phone" placeholder="手机号" value="{{user.phone}}">
+							</div><br>
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">简   介</span></span>
+								<input type="text" class="form-control" name="introduce" placeholder="简介" value="{{user.introduce}}">
+							</div><br>
+							<div id="button">
+								<button class="btn btn-lg btn-primary" type="submit">修改个人资料</button>
+							</div>
+
+						</div>
+					</div>
+				</form>
+				<form action="" method="post" >
+					{% csrf_token %}
+					<div class="panel panel-default panel-single" id="panel">
+						<div class="panel-body">
+							<h4>
+								账号密码
+							</h4>
+							{% if errors%}
+							<div class="alert alert-warning">
+								<a href="#" class="close" data-dismiss="alert">
+									&times;
+								</a>
+								<strong>警告！</strong>{{errors}}
+							</div>			
+							{% endif %}
+							{% if success2 %}
+							<div class="alert alert-success">
+								<a href="#" class="close" data-dismiss="alert">
+									&times;
+								</a>
+								<strong>{{success2}}</strong>
+							</div>			
+							{% endif %}			
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/username.png"><span class="title-name">账  号</span></span>
+								<input type="text" disabled="disabled" class="form-control" name="username" placeholder="输入账号" value="{{user.username}}">
+							</div><br>	
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/password.png"><span class="title-name">原始密码</span></span>
+								<input type="password" class="form-control"  name="password" placeholder="输入原始密码" >
+							</div><br>
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/password.png"><span class="title-name">新密码</span></span>
+								<input type="password" class="form-control"  name="password1" placeholder="输入新密码" >
+							</div><br>
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon"><img src="/static/images/password.png"><span class="title-name">确认新密码</span></span>
+								<input type="password" class="form-control"  name="password2" placeholder="确认新密码" >
+							</div><br>
+							<div id="button">
+								<button class="btn btn-lg btn-primary" type="submit">修改密码</button>
+							</div>
+
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
