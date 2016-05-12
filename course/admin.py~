@@ -1,0 +1,20 @@
+#coding:utf-8
+import admin
+from course.models import *
+class ChapterInline(object):
+	model = Chapter
+	extra = 3
+
+class CourseAdmin(object):
+	list_display = ('name','studentNumber','finishedNumber')
+	inlines = [ChapterInline]
+
+class LessonAdmin(object):
+        list_display = ('chapterId','name','studentNumber','finishedNumber','videoLen')
+
+class ChapterAdmin(object):
+	list_display = ('courseId','number','name')
+
+admin.site.register(Course,CourseAdmin)	
+admin.site.register(Chapter,ChapterAdmin)	
+admin.site.register(Lesson,LessonAdmin)
